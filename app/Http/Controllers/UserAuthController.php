@@ -10,7 +10,7 @@ class UserAuthController extends Controller
     public function login(Request $request)
     {
         if ($request->getMethod() == "POST") {
-            if( !Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            if( !Auth::attempt(['email' => $request->email, 'password' => $request->password],true)){
                 return redirect()->back()->with('message','username password wrong');
             }else{
                 return redirect()->route('dashboard');
