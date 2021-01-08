@@ -1,0 +1,68 @@
+<?php
+
+use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\GallaryController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\UserAuthController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::view('/', 'index');
+Route::match(['GET', 'POST'], 'admin/login', [UserAuthController::class, 'login'])->name('admin.login');
+Route::get('/gallary', [GallaryController::class, 'index'])->name('gallary');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
+Route::get('/services', [ServiceController::class, 'index'])->name('services');
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::prefix('admin')->group(function(){
+        Route::view('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('logout',[UserAuthController::class, 'logout'])->name('admin.logout');
+
+        Route::prefix('carousels')->group(function () {
+            Route::get('/add', [CarouselController::class, 'index'])->name('carousel.add');
+            Route::post('/add', [CarouselController::class, 'submit'])->name('carousel.submit');
+            // Route::get('/edit', [CarouselController::class, 'edit'])->name('carousel.edit');
+            // Route::post('/edit/{carousel}',[CarouselController::class, 'update'])->name('carousel.update');
+            Route::match(['get', 'post'], '/edit/{carousel}', [CarouselController::class, 'edit'])->name('carousel.edit');
+            Route::get('/delete/{carousel}',[CarouselController::class, 'delete'])->name('carousel.delete');
+        });
+
+        Route::prefix('gallary')->group(function () {
+            Route::get('/add', [GallaryController::class, 'add'])->name('gallary.add');
+            Route::post('/add', [GallaryController::class, 'submit'])->name('gallary.submit');
+            Route::post('/edit/{gallary}',[GallaryController::class, 'edit'])->name('gallary.edit');
+            Route::get('/delete/{gallary}',[GallaryController::class, 'delete'])->name('gallary.delete');
+        });
+
+        Route::prefix('projects')->group(function () {
+            Route::get('/add', [ProjectController::class, 'add'])->name('projects.add');
+            Route::post('/add', [ProjectController::class, 'submit'])->name('projects.submit');
+            Route::post('/edit/{project}', [ProjectController::class, 'edit'])->name('projects.edit');
+            Route::get('/delete/{project}', [ProjectController::class, 'delete'])->name('projects.delete');
+        });
+
+        Route::prefix('services')->group(function () {
+            Route::get('/add', [ServiceController::class, 'add'])->name('services.add');
+            Route::post('/add', [ServiceController::class, 'submit'])->name('services.submit');
+            Route::post('/edit/{service}',[ServiceController::class, 'edit'])->name('services.edit');
+            Route::get('/delete/{service}',[ServiceController::class, 'delete'])->name('services.delete');
+        });
+    });
+
+});
