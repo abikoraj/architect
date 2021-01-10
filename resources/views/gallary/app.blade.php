@@ -14,8 +14,8 @@
             <div class="row gallery-item">
                 @foreach (App\Models\Gallary::all() as $item)
                 <div class="col-md-4 all {{ $item->category }}">
-                    <a href="{{ asset('storage/' . $item->picture) }}" class="img-gal">
-                        <div class="single-gallery-image" style="background: url({{ asset('storage/' . $item->picture) }});"></div>
+                    <a href="{{ asset($item->picture) }}" class="img-gal">
+                        <div class="single-gallery-image" style="background: url({{ asset($item->picture) }});"></div>
                     </a>
                 </div>
                 @endforeach

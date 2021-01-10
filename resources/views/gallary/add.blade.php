@@ -49,7 +49,7 @@
                     <form action="{{ route('gallary.edit', ['gallary' => $item->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <span class="img-gal">
-                            <img src="{{ asset('storage/' . $item->picture) }}" class="pt-3" alt="...">
+                            <img src="{{ asset($item->picture) }}" class="pt-3" alt="...">
                         </span>
                         <div class="card-text">
                             <label for="category" style="margin-top: 3px; margin-bottom: 0px;">Category</label>

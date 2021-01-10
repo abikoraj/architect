@@ -51,7 +51,7 @@
                         {{ $item->id }}
                     </td>
                     <td>
-                        <img src="{{ asset('storage/' . $item->image) }}" style="max-width:350px;" alt="">
+                        <img src="{{ asset($item->image) }}" style="max-width:350px;" alt="">
                     </td>
                     <td>
                         {{ $item->title }}

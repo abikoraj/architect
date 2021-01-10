@@ -45,7 +45,7 @@
                         {{ $item->id }}
                     </td>
                     <td>
-                        <img src="{{ asset('storage/' . $item->image) }}" style="max-width:150px;" alt="">
+                        <img src="{{ asset($item->image) }}" style="max-width:150px;" alt="">
                         {{-- <input type="text" class="form-control" name="icon" placeholder="Enter Icon" required
                             value="{{ $item->icon }}"> --}}
                     </td>

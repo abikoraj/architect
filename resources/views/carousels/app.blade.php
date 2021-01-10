@@ -4,7 +4,7 @@
             @foreach (App\Models\Herocarousel::take(3)->get() as $item)
             <div class="item">
                 <div class="hero__slide">
-                    <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                    <img src="{{ asset($item->image) }}" alt="">
                     <div class="hero__slideContent text-center">
                         <h1>{{ $item->title }}</h1>
                         <p>{{ $item->description }}</p>

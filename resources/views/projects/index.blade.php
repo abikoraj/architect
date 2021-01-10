@@ -26,7 +26,7 @@
         <div class="row align-items-end pb-md-5 mb-4">
             <div class="col-md-7 mb-4 mb-md-0 order-md-{{ $i==0?1:2 }}">
                 <div class="portfolio__img">
-                    <img class="img-fluid" src="{{ asset('storage/' . $item->image) }}" alt="">
+                    <img class="img-fluid" src="{{ asset($item->image) }}" alt="">
                 </div>
             </div>
             <div class="col-md-5 mb-5 pl-xl-5 order-md-{{ $i==0?2:1 }}">

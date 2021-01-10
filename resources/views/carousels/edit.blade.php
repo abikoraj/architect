@@ -7,7 +7,7 @@
             <form action="{{ route('carousel.edit',['carousel'=>$item->id]) }}" method="POST" class="form-contact" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <img src="{{ asset('storage/' . $item->image) }}" id="profileDisplay" onclick="triggerClick()"
+                    <img src="{{ asset($item->image) }}" id="profileDisplay" onclick="triggerClick()"
                         style="cursor: pointer;">
                     <input type="file" name="image" onchange="displayImage(this)" id="profilepic" style="display: none;">
                     <span class="text-danger">@error('picture'){{ $message }} @enderror</span>
