@@ -25,7 +25,7 @@
                     elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <p>If you are looking at blank cassettes on the web lorem ipsum dolor sit amet, consectetur
                     adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <a class="btn btn--rightBorder mt-4" href="#/">Read More</a>
+                <a class="btn btn--rightBorder mt-4" href="{{ route('about') }}">Read More</a>
             </div>
         </div>
     </div>

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GallaryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
@@ -19,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/welcome', function () {
+    if(env('theme',"")=="theme1"){
+        return view('theme1.index');
+    }
     return view('welcome');
 });
 
@@ -27,6 +32,8 @@ Route::match(['GET', 'POST'], 'admin/login', [UserAuthController::class, 'login'
 Route::get('/gallary', [GallaryController::class, 'index'])->name('gallary');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
 Route::get('/services', [ServiceController::class, 'index'])->name('services');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 
 Route::group(['middleware' => ['auth']], function () {

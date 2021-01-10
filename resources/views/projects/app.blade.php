@@ -2,7 +2,7 @@
     <div class="container">
         <div class="section-intro">
             <h4 class="section-intro__title">OUR PORTFOLIO</h4>
-            <h2 class="section-intro__subtitle bottom-border">Latest Completed Projects</h2>
+            <h2 class="section-intro__subtitle bottom-border">Our Offered Services</h2>
         </div>
 
         @php

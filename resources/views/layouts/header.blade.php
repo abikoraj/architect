@@ -5,7 +5,7 @@
             <a href="/">Home</a>
         </li>
         <li>
-            <a href="about.html">About</a>
+            <a href="about">About</a>
         </li>
         <li>
             <a href="gallary">Gallary</a>
@@ -36,7 +36,7 @@
             </ul>
         </li>
         <li>
-            <a href="contact.html">Contact</a>
+            <a href="contact">Contact</a>
         </li>
     </ul>
 </div>
@@ -46,13 +46,13 @@
         <div class="w-75" style="background-color: #F9CC41;border-radius:5px;padding:20px;">
             <div class="d-flex justify-content-center text">
                 <a href="/">Home</a>
-                <a href="about.html">About</a>
+                <a href="about">About</a>
                 {{-- <a href="gallary">Gallary</a> --}}
-                <a href="projects">Projects</a>
+                <a href="gallary">Portfolio</a>
                 <span style="width: 150px;"></span>
-                <a href="services">Service</a>
+                <a href="projects">Service</a>
                 <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
+                <a href="contact">Contact</a>
             </div>
         </div>
     </div>

@@ -4,10 +4,10 @@
 
 <header class="hero-banner project-bg">
     <div class="container">
-        <h2 class="section-intro__subtitle">Our Projects</h2>
+        <h2 class="section-intro__subtitle">Our Services</h2>
         <div class="btn-group breadcrumb">
             <a href="/" class="btn">Home</a>
-            <span class="btn btn--rightBorder">Projects</span>
+            <span class="btn btn--rightBorder">Service</span>
         </div>
     </div>
 </header>
@@ -15,7 +15,7 @@
 <section class="portfolio section-margin">
     <div class="container">
         <div class="section-intro">
-            <h4 class="section-intro__title">OUR PORTFOLIO</h4>
+            <h4 class="section-intro__title">OUR PROJECTS</h4>
             <h2 class="section-intro__subtitle bottom-border">Latest Completed Projects</h2>
         </div>
 

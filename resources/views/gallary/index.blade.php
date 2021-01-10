@@ -3,10 +3,10 @@
 @section('content')
 <header class="hero-banner project-bg">
     <div class="container">
-        <h2 class="section-intro__subtitle">Our Gallary</h2>
+        <h2 class="section-intro__subtitle">Our Portfolio</h2>
         <div class="btn-group breadcrumb">
           <a href="/" class="btn">Home</a>
-          <span class="btn btn--rightBorder">Gallary</span>
+          <span class="btn btn--rightBorder">Portfolio</span>
         </div>
     </div>
 </header>

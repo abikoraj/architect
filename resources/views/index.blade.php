@@ -10,6 +10,8 @@
 
 @include('projects.app')
 
-@include('ourservices.app')
+@include('about.testimonial')
+
+{{-- @include('ourservices.app') --}}
 
 @endsection
