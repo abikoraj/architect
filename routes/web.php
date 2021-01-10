@@ -29,8 +29,8 @@ Route::get('/welcome', function () {
 
 Route::view('/', 'index');
 Route::match(['GET', 'POST'], 'admin/login', [UserAuthController::class, 'login'])->name('admin.login');
-Route::get('/gallary', [GallaryController::class, 'index'])->name('gallary');
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
+Route::get('/portfolio', [GallaryController::class, 'index'])->name('gallary');
+Route::get('/works', [ProjectController::class, 'index'])->name('projects');
 Route::get('/services', [ServiceController::class, 'index'])->name('services');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
