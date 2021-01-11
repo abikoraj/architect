@@ -9,12 +9,12 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        return view('projects.index');
+        return view('works.index');
     }
 
     public function add()
     {
-        return view('projects.add');
+        return view('works.add');
     }
 
     public function submit(Request $request)

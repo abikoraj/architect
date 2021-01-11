@@ -9,11 +9,11 @@ class GallaryController extends Controller
 {
     public function index()
     {
-        return view('gallary.index');
+        return view('portfolio.index');
     }
     public function add()
     {
-        return view('gallary.add');
+        return view('portfolio.add');
     }
 
     public function submit(Request $request)

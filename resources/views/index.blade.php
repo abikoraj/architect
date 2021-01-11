@@ -6,9 +6,9 @@
 
 @include('about.app')
 
-@include('gallary.app')
+@include('portfolio.app')
 
-@include('projects.app')
+@include('works.app')
 
 @include('about.testimonial')
 

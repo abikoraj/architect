@@ -8,21 +8,10 @@
             <a href="about">About</a>
         </li>
         <li>
-            <a href="gallary">Gallary</a>
+            <a href="{{ route('gallary') }}">Our Portfolio</a>
         </li>
         <li>
-            <a href="projects">Projects</a>
-        </li>
-        <li>
-            <a href="services">Service</a>
-        </li>
-        <li>
-            <a href="#">Pages</a>
-            <ul class="list">
-                <li>
-                    <a href="elements.html">Elements</a>
-                </li>
-            </ul>
+            <a href="{{ route('projects') }}">Services</a>
         </li>
         <li>
             <a href="#">Blog</a>
@@ -46,13 +35,13 @@
         <div class="w-75" style="background-color: #F9CC41;border-radius:5px;padding:20px;">
             <div class="d-flex justify-content-center text">
                 <a href="/">Home</a>
-                <a href="about">About</a>
+                <a href="{{ route('about') }}">About</a>
                 {{-- <a href="gallary">Gallary</a> --}}
-                <a href="gallary">Portfolio</a>
+                <a href="{{ route('gallary') }}">Portfolio</a>
                 <span style="width: 150px;"></span>
-                <a href="projects">Service</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact">Contact</a>
+                <a href="{{ route('projects') }}">Service</a>
+                <a href="/">Blog</a>
+                <a href="{{ route('contact') }}">Contact</a>
             </div>
         </div>
     </div>
