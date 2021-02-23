@@ -97,14 +97,14 @@
                         <li><a href="project-list.html">Services List</a></li>
                     </ul>
                 </li> --}}
-                <li> <a href="javascript:void(0);" class="menu-toggle"><i
+                {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i
                             class="zmdi zmdi-blogger"></i><span>Blog</span></a>
                             {{-- <i class="ti ti"></i> --}}
                     <ul class="ml-menu">
                         <li><a href="blog-dashboard.html">Add Blog</a></li>
                         <li><a href="blog-post.html">List Blogs</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li><a href="{{ route('admin.logout') }}"><i class="zmdi zmdi-sign-in"></i><span>
                             <form method="POST" action="" style="display:inline;">
                                 @csrf

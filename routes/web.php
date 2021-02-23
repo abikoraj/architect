@@ -21,31 +21,35 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::prefix('/')->group(function () {
+Route::middleware(['visitor'])->group(function () {
     
-    if(env('theme',"theme1")=="theme1"){
+    Route::prefix('/')->group(function () {
+        if(env('theme',"theme1")=="theme1"){
+            
+            Route::view('/', 'index');
+            Route::get('/welcome', function () {
+                if(env('theme',"")=="theme1"){
+                    return view('theme1.index');
+                }
+                return view('welcome');
+            });
+            Route::get('/portfolio', [GallaryController::class, 'index'])->name('gallary');
+            Route::get('/works', [ProjectController::class, 'index'])->name('projects');
+            Route::get('/services', [ServiceController::class, 'index'])->name('services');
+            Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+            Route::get('/about', [AboutController::class, 'index'])->name('about');
+        }else if(env('theme',"theme1")=="theme2"){
+            Route::name("theme2.")->group(function(){
+             Route::post('message',  [HomeController::class,'message'])->name('message');
+
+                Route::get('', [HomeController::class,'index'])->name('home');
+                Route::get('about', [HomeController::class,'about'])->name('about');
+                Route::get('services', [HomeController::class,'services'])->name('services');
+                Route::get('contact', [HomeController::class,'contact'])->name('contact');
+            });
         
-        Route::view('/', 'index');
-        Route::get('/welcome', function () {
-            if(env('theme',"")=="theme1"){
-                return view('theme1.index');
-            }
-            return view('welcome');
-        });
-        Route::get('/portfolio', [GallaryController::class, 'index'])->name('gallary');
-        Route::get('/works', [ProjectController::class, 'index'])->name('projects');
-        Route::get('/services', [ServiceController::class, 'index'])->name('services');
-        Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-        Route::get('/about', [AboutController::class, 'index'])->name('about');
-    }else if(env('theme',"theme1")=="theme2"){
-        Route::name("theme2.")->group(function(){
-            Route::get('', [HomeController::class,'index'])->name('home');
-            Route::get('about', [HomeController::class,'about'])->name('about');
-            Route::get('services', [HomeController::class,'services'])->name('services');
-            Route::get('contact', [HomeController::class,'contact'])->name('contact');
-        });
-    
-    }
+        }
+    });
 });
 
 

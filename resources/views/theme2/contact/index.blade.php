@@ -25,12 +25,14 @@ $setting=\App\Models\Setting::first();
                 {{$setting->contact_quote}}
             </p>
             <!-- RD Mailform-->
-            <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" >
+            <form  method="post" action="{{route('theme2.message')}}">
+              @csrf
+              
               <div class="row align-items-md-end row-20">
                 <div class="col-md-6">
                   <div class="form-wrap">
-                    <input class="form-input" id="contact-first-name" type="text" name="first-name" data-constraints="@Required">
-                    <label class="form-label" for="contact-first-name">First name</label>
+                    <input class="form-input" id="contact-first-name" type="text" name="name" data-constraints="@Required">
+                    <label class="form-label" for="contact-first-name">Name</label>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -41,13 +43,24 @@ $setting=\App\Models\Setting::first();
                 </div>
                 <div class="col-sm-12">
                   <div class="form-wrap">
+                    <select name="service" id="service" class="form-input" required>
+                      <option >Select A Service</option>
+                      @foreach (\App\Models\Service::all() as $item)
+                          <option value="{{$item->title}}">{{$item->title}}</option>
+                      @endforeach
+                    </select>
+                    {{-- <label class="form-label" for="contact-phone">Phone</label> --}}
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-wrap">
                     <label class="form-label" for="contact-message">Your Message</label>
-                    <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required"></textarea>
+                    <textarea class="form-input" id="contact-message" name="message" data-constraints=""></textarea>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-wrap">
-                    <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required">
+                    <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email ">
                     <label class="form-label" for="contact-email">E-mail</label>
                   </div>
                 </div>
