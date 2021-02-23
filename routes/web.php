@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GallaryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Theme2\AboutController as Theme2AboutController;
 use App\Http\Controllers\Theme2\HomeController;
 use App\Http\Controllers\UserAuthController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,7 @@ Route::prefix('/')->group(function () {
         Route::name("theme2.")->group(function(){
             Route::get('', [HomeController::class,'index'])->name('home');
             Route::get('about', [HomeController::class,'about'])->name('about');
+            Route::get('services', [HomeController::class,'services'])->name('services');
         });
     
     }
@@ -81,6 +83,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/edit/{service}',[ServiceController::class, 'edit'])->name('services.edit');
             Route::get('/delete/{service}',[ServiceController::class, 'delete'])->name('services.delete');
         });
+
+        Route::prefix('about')->group(function () {
+            Route::get('', [Theme2AboutController::class, 'list'])->name('about.list');
+            Route::match(['GET','POST'],'/add', [Theme2AboutController::class, 'add'])->name('about.add');
+            Route::match(['GET','POST'],'/edit/{about}', [Theme2AboutController::class, 'edit'])->name('about.edit');
+            Route::get('/delete/{about}',[Theme2AboutController::class, 'delete'])->name('about.delete');
+        });
+
     });
 
 });

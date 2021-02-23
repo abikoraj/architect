@@ -87,21 +87,32 @@
       <section class="section section-md bg-default">
         <div class="container">
           <div class="row row-70 justify-content-md-center justify-content-xl-between">
-            <div class="col-md-10 col-lg-6 col-xl-5">
-              <h4 class="title">Experience since 1999</h4>
-              <p>Vae. Pol, caesium! Cum boreas crescere, omnes ususes captis teres, rusticus nuclear vexatum iacerees.</p>
-              <p>Poeta studeres, tanquam nobilis medicina. Caesium moris, tanquam emeritis plasmator. Nunquam convertam adgium. Danista raptus lumen est. Cum epos volare, omnes impositioes imperium castus, rusticus adgiumes.</p>
-              <h4 class="title">Our Mission</h4>
-              <p>Raptus bullas ducunt ad glos. Lunas cantare! Assimilant satis ducunt ad teres liberi. Sunt nomenes manifestum neuter, audax lixaes.</p>
-            </div>
-            <div class="col-md-10 col-lg-6">
-              <div class="row grid-2">
-                <div class="col-6"><img src="images/about-1-273x214.jpg" alt="" width="273" height="214"/><img src="images/about-2-273x214.jpg" alt="" width="273" height="214"/>
-                </div>
-                <div class="col-6"><img src="images/about-3-273x451.jpg" alt="" width="273" height="451"/>
+            @foreach (\App\Models\AboutUs::all() as $about)
+                
+              <div class="col-md-10 col-lg-6 col-xl-5">
+                <h4 class="title mb-3">{{$about->title}}</h4>
+                <div style="word-break: break-word;">
+                  {!! $about->desc !!}
                 </div>
               </div>
-            </div>
+              <div class="col-md-10 col-lg-6 col-xl-7">
+                  <div class="row">
+                    @if ($about->multiple==1)
+                        <div class="col-6">
+                            <img src="{{asset($about->image1)}}" class="w-100" alt="">
+                        </div>
+                        <div class="col-6">
+                            <img src="{{asset($about->image2)}}" class="w-100" alt="">
+                        </div>
+                    @else
+                        <div class="col-12">
+                            <img src="{{asset($about->image1)}}" class="w-100" alt="">
+                        </div>
+                    @endif
+                  </div>
+              </div>
+            @endforeach
+          
           </div>
         </div>
       </section>

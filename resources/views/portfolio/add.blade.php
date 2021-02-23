@@ -1,68 +1,75 @@
 @extends('layouts.admin.layout')
 @section('title', 'Add Gallary')
-
 @section('content')
-    @php
-    $tags=[
-    'Bed Room',
-    'Kitchen',
-    'Office',
-    'Others'
-    ]
-    @endphp
 
-    <div class="col-md-8 col-lg-9 offset-md-4">
-        <h2>Add Photos to Gallary</h2>
-        <form action="{{ route('gallary.submit') }}" method="POST" class="form-contact" enctype="multipart/form-data">
-            @csrf
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="form-group text-center">
-                        <img src="{{ asset('assets/img/profile_dummy.png') }}" id="profileDisplay" onclick="triggerClick()" style="cursor: pointer;">
-                        <label for="picture">Gallary Image</label>
-                        <input type="file" name="picture" onchange="displayImage(this)" id="profilepic"
-                            style="display: none;" required>
-                        <span class="text-danger">@error('picture'){{ $message }} @enderror</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <input type="text" name="category" class="form-control" required>
-                        {{-- @foreach ($tags as $item)
-                            <option value="{{ $item }}">{{ $item }}</option>
-                        @endforeach --}}
-                        <span class="text-danger">@error('category'){{ $message }} @enderror</span>
-                    </div>
-                    <div class="form-group text-center text-md-right">
-                        <button type="submit" class="btn active btn--leftBorder">Upload</button>
-                    </div>
-                </div>
+<form action="{{ route('gallary.submit') }}" method="post" enctype="multipart/form-data" class="shadow p-4">
+    @csrf
+    <div class="row">
+
+        <div class="col-md-12 mb-4">
+            <div id="images" class=" row ">
             </div>
-        </form>
-    </div>
-
-    <hr>
-
-    <div class="pb-3 pt-3 pl-3 pr-3">
-        <div class="row gallery-item">
-            @foreach (App\Models\Gallary::all() as $item)
-                <div class="card mx-2 shadow col-md-4" style="width: 18rem;">
-                    <form action="{{ route('gallary.edit', ['gallary' => $item->id]) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <span class="img-gal">
-                            <img src="{{ asset($item->picture) }}" class="pt-3" alt="...">
-                        </span>
-                        <div class="card-text">
-                            <label for="category" style="margin-top: 3px; margin-bottom: 0px;">Category</label>
-                            <input type="text" class="form-control" name="category" placeholder="Category" required
-                                value="{{ $item->category }}">
-                        </div>
-                        <div>
-                            <input type="submit" class=" btn btn-primary" value="Update">
-                            <a href="{{ route('gallary.delete', ['gallary' => $item->id]) }}" class="btn btn-danger"> Delete</a>
-                        </div>
-                    </form>
-                </div>
-            @endforeach
         </div>
+        <div class="col-md-12 mb-4">
+            <div>
+                <input accept="image/*"  required type="file" multiple name="images[]" onchange="loadImages(this);" class="forn-control" placeholder="Please Select Images">
+            </div>
+        </div>
+        <div class="col-md-12 mb-4">
+            <input type="text" name="caption" class="form-control" required placeholder="Enter Captions" required>
+        </div>
+        <div class="col-md-12">
+            <button class="btn btn-primary">Save Change</button>
+        </div>
+
     </div>
+</form>
+
+<div class="p-4">
+    <div class="row">
+        @foreach (\App\Models\Gallary::all() as $gallery)
+            <div class="col-3" style="position: relative;" id="gal-{{$gallery->id}}">
+                <img src="{{asset($gallery->picture)}}" alt="" class="w-100">
+                <div>
+                    {{$gallery->category}}
+                </div>
+                <button style="position: absolute;right:5px;top:5px;" class="btn btn-danger" onclick="call('{{route('gallary.delete',['gallary'=>$gallery->id])}}');">X</button>
+            </div>
+        @endforeach
+    </div>
+</div>
+@endsection
+@section('js')
+<script>
+
+    loaders=[];
+
+
+    function loadImages(ele){
+        loaders=[];
+        console.log(ele);
+        if(ele.files && ele.files.length>0){
+            for (let i = 0; i < ele.files.length; i++) {
+                const element = ele.files[i];
+                console.log(element);
+                fr = new FileReader();
+                fr.onload = function(event){
+                    d=' <div class="col-3"><img src="'+ event.target.result+'" style="width:100%"></div>'
+                    console.log(d);
+                    $('#images').append(d);
+                }
+                fr.readAsDataURL(element);
+            }
+        }
+
+    }
+
+    function call(url){
+        // alert(url);
+        axios.get(url)
+        .then(function(response){
+                $('#gal-'+response.data.id).remove();
+        })
+    }
+</script>
 @endsection

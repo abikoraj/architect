@@ -14,4 +14,8 @@ class HomeController extends Controller
         return view('theme2.about.index');
     }
 
+    public function services(){
+        return view('theme2.service.index');
+    }
+
 }

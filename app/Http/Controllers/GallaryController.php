@@ -18,10 +18,13 @@ class GallaryController extends Controller
 
     public function submit(Request $request)
     {
-        $gallary = new Gallary();
-        $gallary->picture=$request->picture->store('gallary','public');
-        $gallary->category=$request->category;
-        $gallary->save();
+        foreach ($request->images as  $image) {
+            
+            $gallary = new Gallary();
+            $gallary->picture=$image->store('gallary','public');
+            $gallary->category=$request->caption;
+            $gallary->save();
+        }
         return back()->with('message','Image Saved Successfully!');
     }
 
@@ -35,7 +38,8 @@ class GallaryController extends Controller
     }
     public function delete(Gallary $gallary)
     {
+        $id=$gallary->id;
         $gallary->delete();
-        return back()->with('message','Image Deleted Successfully!');
+        return response()->json(['id'=>$id]);
     }
 }

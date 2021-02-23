@@ -2,15 +2,21 @@
 @section('title', 'Add Services')
 @section('content')
 
-    <div class="col-md-8 col-lg-9 ">
+    
         <h2>Add New Projects</h2>
-        <form action="{{ route('services.submit') }}" method="POST" class="form-contact">
+        <form action="{{ route('services.submit') }}" method="POST" class="form-contact" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-lg-5">
-                    <div class="form-group">
-                        <input class="form-control" name="icon" type="text" placeholder="Enter Icon" required>
-                    </div>
+                <div class="col-md-12">
+                    @if (env('theme',"theme1")=="theme1")
+                        <div class="form-group">
+                            <input class="form-control" name="icon" type="text" placeholder="Enter Icon" required>
+                        </div>
+                       @else 
+                        <div class="form-group">
+                            <input class="form-control" name="icon" type="file"  accept="images/*" placeholder="Enter Icon" required>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <input class="form-control" name="title" type="text" placeholder="Enter Title" required
                             maxlength="30">
@@ -25,7 +31,7 @@
             </div>
         </form>
 
-    </div>
+    
 
     <hr>
 
@@ -48,8 +54,12 @@
                             {{ $item->id }}
                         </td>
                         <td>
-                            <input type="text" class="form-control" name="icon" placeholder="Enter Icon" required
+                            @if (env('theme',"theme1")=="theme1")
+                                <input type="text" class="form-control" name="icon" placeholder="Enter Icon" required
                                 value="{{ $item->icon }}">
+                            @else
+                                <img src="{{asset($item->icon)}}" alt="" style="width:150px;">
+                            @endif
                         </td>
                         <td>
                             <input type="text" class="form-control" name="title" placeholder="Enter Title" required

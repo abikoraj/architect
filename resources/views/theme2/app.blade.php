@@ -62,11 +62,13 @@
                   <div class="rd-navbar-main-item"><a class="button button-xs button-lighter" href="contacts.html">Get a quote</a></div>
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
-                    <li class="active"><a href="/">Home</a>
+                    <li class="{{Route::is('theme2.home')?'active':''}}"><a href="{{route('theme2.home')}}">Home</a>
                     </li>
-                    <li><a href="{{route('theme2.about')}}">About Us</a>
+                    <li class="{{Route::is('theme2.about')?'active':''}}"><a href="{{route('theme2.about')}}">About Us</a>
                     </li>
-                    <li><a href="typography.html">Typography</a>
+                    <li class="{{Route::is('theme2.services')?'active':''}}"><a href="{{route('theme2.services')}}">Services</a>
+                    </li>
+                    <li class="{{Route::is('theme2.home')?'active':''}}"><a href="typography.html">Typography</a>
                     </li>
                     <li><a href="contacts.html">Contacts</a>
                     </li>

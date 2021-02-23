@@ -20,7 +20,13 @@ class ServiceController extends Controller
     public function submit(Request $request)
     {
         $service = new Service();
-        $service->icon = $request->icon;
+        if (env('theme',"theme1")=="theme1"){
+
+            $service->icon = $request->icon;
+        }else{
+            $service->icon = $request->icon->store('gallary','public');
+
+        }
         $service->title = $request->title;
         $service->description = $request->description;
         $service->save();
@@ -29,7 +35,16 @@ class ServiceController extends Controller
 
     public function edit(Service $service, Request $request){
 
-        $service->icon = $request->icon;
+        if (env('theme',"theme1")=="theme1"){
+
+            $service->icon = $request->icon??"";
+        }
+        // }else{
+        //     if()
+        //     $service->icon = $request->icon->store('gallary','public');
+
+        // }
+        // $service->icon = $request->icon;
         $service->title = $request->title;
         $service->description = $request->description;
         $service->save();
