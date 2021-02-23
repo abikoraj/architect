@@ -79,6 +79,8 @@
                 <li><a href="{{ route('gallary.add') }}"><i class="zmdi zmdi-collection-folder-image"></i><span>Gallary</span></a></li>
                 <li><a href="{{ route('services.add') }}"><i class="zmdi zmdi-album"></i><span>Services</span></a></li>
                 <li><a href="{{ route('projects.add') }}"><i class="zmdi zmdi-assignment"></i><span>Projects</span></a></li>
+                <li><a href="{{ route('about.list') }}"><i class="zmdi zmdi-assignment"></i><span>About Blocks</span></a></li>
+                <li><a href="{{ route('setting') }}"><i class="zmdi zmdi-assignment"></i><span>Setting</span></a></li>
                 {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i
                             class="zmdi zmdi-image"></i><span>Gallary</span></a>
                     <ul class="ml-menu">

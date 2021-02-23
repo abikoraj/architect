@@ -23,6 +23,10 @@
             padding-bottom: 0;
         }
     </style>
+    @php
+        $setting=\App\Models\Setting::first();
+
+    @endphp
   </head>
   <body>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
@@ -30,7 +34,7 @@
     <div class="preloader" id="preloader">
       <div class="page-loader-logo">
         <div class="brand">
-          <div class="brand__name"><img src="{{asset('PR.png')}}" alt="" />
+          <div class="brand__name"><img src="{{asset($setting->logo)}}" alt="" />
           </div>
         </div>
       </div>
@@ -54,12 +58,12 @@
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                   <!-- RD Navbar Brand-->
                   <div class="rd-navbar-brand"><a class="brand" href="/">
-                      <div class="brand__name"><img src="{{asset('PR.png')}}" alt="" />
+                      <div class="brand__name"><img src="{{asset($setting->logo)}}" alt="" />
                       </div></a></div>
                 </div>
                 <!-- RD Navbar Nav-->
                 <div class="rd-navbar-nav-wrap">
-                  <div class="rd-navbar-main-item"><a class="button button-xs button-lighter" href="contacts.html">Get a quote</a></div>
+                  <div class="rd-navbar-main-item"><a class="button button-xs button-lighter" href="{{route('theme2.contact')}}">Get a quote</a></div>
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
                     <li class="{{Route::is('theme2.home')?'active':''}}"><a href="{{route('theme2.home')}}">Home</a>
@@ -68,9 +72,9 @@
                     </li>
                     <li class="{{Route::is('theme2.services')?'active':''}}"><a href="{{route('theme2.services')}}">Services</a>
                     </li>
-                    <li class="{{Route::is('theme2.home')?'active':''}}"><a href="typography.html">Typography</a>
-                    </li>
-                    <li><a href="contacts.html">Contacts</a>
+                    {{-- <li class="{{Route::is('theme2.home')?'active':''}}"><a href="typography.html">Typography</a>
+                    </li> --}}
+                    <li class="{{Route::is('theme2.contact')?'active':''}}"><a href="{{route('theme2.contact')}}">Contact</a>
                     </li>
                   </ul>
                 </div>
@@ -85,14 +89,10 @@
         <div class="container">
           <div class="footer-classic__main">
             <ul class="list-nav-bordered">
-              <li><a href="/">Home</a></li>
-              <li><a href="{{route('theme2.about')}}">About Us</a>
-              </li>
-              <li><a href="#">Production</a></li>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">Media</a></li>
-              <li><a href="contacts.html">Contacts</a>
-              </li>
+              <li><a href="{{route('theme2.home')}}">Home</a></li>
+              <li><a href="{{route('theme2.about')}}">About Us</a></li>
+              <li><a href="{{route('theme2.services')}}">Services</a></li>
+              <li><a href="{{route('theme2.contact')}}">Contacts</a></li>
             </ul>
           </div>
           <div class="divider"></div>
@@ -107,9 +107,9 @@
                   <li>
                     <p>Follow Us</p>
                   </li>
-                  <li><a class="icon icon-xs icon-style-modern fa fa-facebook" href="#"></a></li>
-                  <li><a class="icon icon-xs icon-style-modern fa fa-twitter" href="#"></a></li>
-                  <li><a class="icon icon-xs icon-style-modern fa fa-instagram" href="#"></a></li>
+                  <li><a class="icon icon-xs icon-style-modern fa fa-facebook" href="{{$setting->fb}}"></a></li>
+                  <li><a class="icon icon-xs icon-style-modern fa fa-twitter" href="{{$setting->insta}}"></a></li>
+                  <li><a class="icon icon-xs icon-style-modern fa fa-instagram" href="{{$setting->twitter}}"></a></li>
                 </ul>
               </div>
             </div>

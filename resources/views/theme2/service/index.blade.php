@@ -1,6 +1,9 @@
 @extends('theme2.app')
 @section('content')
+@php
+$setting=\App\Models\Setting::first();
 
+@endphp
     <style>
          .section-intro__subtitle{
             position: relative;
@@ -110,7 +113,7 @@
         
     </style>
     <!-- Breadcrumbs-->
-    <section class="breadcrumbs-custom bg-image" style="background-image: url({{asset('jumbotron.png')}});">
+    <section class="breadcrumbs-custom bg-image" style="background-image: url({{asset($setting->jumbotron)}});">
         <div class="container">
           <h2 class="breadcrumbs-custom__title">Our Services</h2>
           <ul class="breadcrumbs-custom__path">
@@ -125,7 +128,7 @@
             <div class="container">
 
                 <h4 class="section-intro__title text-center" style="font-size:16px;font-weight:400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing
+                    {{$setting->service_quote}}
                 </h4>
                 <h2 class="section-intro__subtitle ">Our Offered Services</h2>
             </div>

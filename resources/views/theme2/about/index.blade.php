@@ -1,5 +1,9 @@
 @extends('theme2.app')
 @section('content')
+@php
+$setting=\App\Models\Setting::first();
+
+@endphp
 <style>
   .service-item{
     box-shadow: 0px 0px 25px 0px rgb(0 0 0 / 20%);
@@ -37,7 +41,47 @@
     margin-bottom: 20px;
   }
 
+  .cta-title{
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  .cta-title::after{
+      position: absolute;
+      content: '';
+      left: 0px;
+      bottom: 0px;
+      width: 50px;
+      height: 4px;
+      background-color: #d9b256;
+  }
+
+  .about-text{
+    word-break: break-word;
+  }
   @media(max-width:768px){
+    .about-text{
+      text-align:justify;
+    }
+    .cta{
+      text-align:center;
+      padding:35px 15px;
+    }
+    .cta-title{
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-align:center;
+  }
+  .cta-title::after{
+      position: absolute;
+      content: '';
+      left: calc(50% - 17px);
+      bottom: 0px;
+      width: 35px;
+      height: 2px;
+      background-color: #d9b256;
+  }
     .section-intro__subtitle{
       text-align:center;
       font-size: 20px;
@@ -74,7 +118,7 @@
   }
 </style>
      <!-- Breadcrumbs-->
-      <section class="breadcrumbs-custom bg-image" style="background-image: url({{asset('jumbotron.png')}});">
+      <section class="breadcrumbs-custom bg-image" style="background-image: url({{asset($setting->jumbotron)}});">
         <div class="container">
           <h2 class="breadcrumbs-custom__title">About Us</h2>
           <ul class="breadcrumbs-custom__path">
@@ -91,21 +135,21 @@
                 
               <div class="col-md-10 col-lg-6 col-xl-5">
                 <h4 class="title mb-3">{{$about->title}}</h4>
-                <div style="word-break: break-word;">
+                <div class="about-text" style="">
                   {!! $about->desc !!}
                 </div>
               </div>
               <div class="col-md-10 col-lg-6 col-xl-7">
                   <div class="row">
                     @if ($about->multiple==1)
-                        <div class="col-6">
+                        <div class="col-md-6 mb-1">
                             <img src="{{asset($about->image1)}}" class="w-100" alt="">
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6 mb-1">
                             <img src="{{asset($about->image2)}}" class="w-100" alt="">
                         </div>
                     @else
-                        <div class="col-12">
+                        <div class="col-md-12">
                             <img src="{{asset($about->image1)}}" class="w-100" alt="">
                         </div>
                     @endif
@@ -117,49 +161,19 @@
         </div>
       </section>
       <!-- Our History-->
-      <section class="section parallax-container bg-gray-dark" data-parallax-img="images/parallax-6.jpg">
-        <div class="parallax-content">
-          <div class="section-md text-center">
-            <div class="container">
-              <h2>Our History</h2>
-              <div class="timeline">
-                <div class="timeline__item-wrap">
-                  <!-- Timeline item-->
-                  <article class="timeline__item">
-                    <div class="timeline__item-header">
-                      <h5>Establishment,1999</h5>
-                    </div>
-                    <div class="timeline__item-main"><img src="images/about-4-93x86.jpg" alt="" width="93" height="86"/>
-                      <p>Cum vita assimilant, omnes bullaes dignus alter, mirabilis cottaes.</p>
-                    </div>
-                  </article>
-                </div>
-                <div class="timeline__item-wrap">
-                  <!-- Timeline item-->
-                  <article class="timeline__item timeline__item-reverse">
-                    <div class="timeline__item-header">
-                      <h5>Recognition,2005</h5>
-                    </div>
-                    <div class="timeline__item-main"><img src="images/about-5-93x86.jpg" alt="" width="93" height="86"/>
-                      <p>Cursuss resistere! Domesticus, grandis compaters callide dignus.</p>
-                    </div>
-                  </article>
-                </div>
-                <div class="timeline__item-wrap">
-                  <!-- Timeline item-->
-                  <article class="timeline__item">
-                    <div class="timeline__item-header">
-                      <h5>Industry Leader,2019</h5>
-                    </div>
-                    <div class="timeline__item-main"><img src="images/about-6-93x86.jpg" alt="" width="93" height="86"/>
-                      <p>Consiliums peregrinationes in bi-color aetheres! Victrixs.</p>
-                    </div>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </div>
+      <section class="section bg-gray-dark" >
+      <div class="cta row">
+        <div class="col-md-6 d-none d-md-block" style="clip-path: polygon(0 0, 97% 0, 81% 100%, 0% 100%);
+        ">
+          <img src="{{asset($setting->contact_cta_image)}}" class="w-100" alt="">
         </div>
+        <div class="col-md-6 py-md-5 py-0">
+          <h3 class="mt-md-5 mt-0 cta-title">{{$setting->contact_cta_title}}</h3 class="mt-md-5 mt-0 right">
+          <h5>
+            {!!$setting->contact_cta_text!!}
+          </h5>
+        </div>
+      </div>
       </section>
       @php
           $i=0;

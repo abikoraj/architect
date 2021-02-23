@@ -42,6 +42,7 @@ Route::prefix('/')->group(function () {
             Route::get('', [HomeController::class,'index'])->name('home');
             Route::get('about', [HomeController::class,'about'])->name('about');
             Route::get('services', [HomeController::class,'services'])->name('services');
+            Route::get('contact', [HomeController::class,'contact'])->name('contact');
         });
     
     }
@@ -83,6 +84,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/edit/{service}',[ServiceController::class, 'edit'])->name('services.edit');
             Route::get('/delete/{service}',[ServiceController::class, 'delete'])->name('services.delete');
         });
+
+        Route::match(['GET','POST'],'/setting', [Theme2AboutController::class, 'setting'])->name('setting');
 
         Route::prefix('about')->group(function () {
             Route::get('', [Theme2AboutController::class, 'list'])->name('about.list');
