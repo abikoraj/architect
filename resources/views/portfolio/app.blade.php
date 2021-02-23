@@ -5,9 +5,9 @@
             <h2 class="section-intro__subtitle bottom-border">Our Work Gallary</h2>
         </div>
         <div class="button-group-area">
-            <button class="genric-btn primary" onclick="filter('.all')">ALL WORKS</button>
+            <button id="all" class="genric-btn primary" onclick="filter('.all')">ALL WORKS</button>
             @foreach (App\Models\Gallary::select('category')->distinct()->get() as $item)
-            <button class="genric-btn primary" onclick="filter('.{{ $item->category }}')">{{ $item->category }}</button>
+            <button id="$item->category" class="genric-btn primary" onclick="filter('.{{ $item->category }}')">{{ $item->category }}</button>
             @endforeach
         </div>
         <div>
