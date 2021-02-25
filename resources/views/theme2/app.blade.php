@@ -19,8 +19,13 @@
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
     <style>
         .rd-navbar-fullwidth.rd-navbar--is-clone .rd-navbar-main-outer, .rd-navbar-fullwidth.rd-navbar--is-stuck .rd-navbar-main-outer {
-            padding-top: 0;
-            padding-bottom: 0;
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+        }
+        .rd-navbar-nav{
+          text-align:right;
+          padding-right:40px;
         }
     </style>
     @php
