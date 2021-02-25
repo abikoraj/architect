@@ -7,3 +7,14 @@
         <div></div>
   
 @endsection
+@section("js")
+        <script src="{{asset('grid/jquery.masonryGrid.js')}}"></script>
+        <script>
+                $(function(){
+                        $('.my-masonry-grid').masonryGrid({
+                        'columns': 2
+                        });  
+                });
+
+        </script>
+@endsection
