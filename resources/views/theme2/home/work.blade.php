@@ -85,16 +85,16 @@
         ->get()
     as $item)
                 <button id="{{ $item->category }}" class="genric-btn primary"
-                    onclick="filter('{{ $item->category }}')">{{ $item->category }}
+                    onclick="filter('{{str_replace(' ','_',$item->category }}')">{{ $item->category }}
                 </button>
             @endforeach
-        </div>
+        </div> 
         <div>
 
             <div class="masonry-wrapper">
                 <div class="masonry">
                     @foreach (App\Models\Gallary::all() as $item)
-                        <div class="masonry-item all {{ $item->category }}">
+                        <div class="masonry-item all {{ str_replace(' ','_',$item->category }}">
                             <img src="{{ asset($item->picture) }}" class="w-100" alt="">
                         </div>
                     @endforeach
