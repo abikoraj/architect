@@ -85,7 +85,7 @@ $setting=\App\Models\Setting::first();
             <p class="heading-8">Phone</p>
             <div class="unit flex-row unit-spacing-xxs">
               <div class="unit__left"><span class="icon icon-sm icon-primary material-icons-local_phone"></span></div>
-              <div class="unit__body"><a href="tel:{{$setting->phone}}">{{$setting->twitter}}</a></div>
+              <div class="unit__body"><a href="tel:{{$setting->phone}}">{{$setting->phone}}</a></div>
             </div>
           </div>
           <div class="layout-bordered__aside-item">

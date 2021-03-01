@@ -89,7 +89,7 @@ class AboutController extends Controller
             $setting->addr=$request->addr;
             $setting->mapurl=$request->mapurl;
             $setting->service_quote=$request->service_quote;
-            $setting->contact_quote=$request->frontvideo;
+            $setting->contact_quote=$request->contact_quote;
             $setting->frontvideo=$request->frontvideo;
 
             $setting->save();
