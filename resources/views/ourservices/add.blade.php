@@ -19,10 +19,11 @@
                     @endif
                     <div class="form-group">
                         <input class="form-control" name="title" type="text" placeholder="Enter Title" required
-                            maxlength="30">
+                            >
                     </div>
                     <div class="form-group">
-                        <input class="form-control" name="description" type="text" placeholder="Enter Description" required>
+                        <textarea class="form-control" name="description" type="text" placeholder="Enter Description" required></textarea>
+                       
                     </div>
                     <div class="form-group text-center text-md-right">
                         <button type="submit" class="btn btn-success">Save Project</button>
