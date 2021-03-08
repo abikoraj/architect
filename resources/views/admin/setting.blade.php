@@ -36,6 +36,16 @@
                                 <tr>
                                     <td class="text-right">About Video</td><td><input type="url" name="frontvideo" id="frontvideo" class="form-control" placeholder="About Video Link" value="{{$setting->frontvideo}}"></td>
                                 </tr>
+                                <tr>
+                                    <td class="text-right">About Video Image</td>
+                                        <td>
+                                            @if ($setting->frontvideoimage!=null)
+                                                <input type="file" class="dropify" name="frontvideoimage" accept="images/*" data-default-file="{{asset($setting->frontvideoimage)}}"/>
+                                            @else
+                                                <input type="file" class="dropify" name="frontvideoimage" accept="images/*" />
+                                            @endif
+                                        </td>
+                                </tr>
                             </table>
                         </div>
                     </div>

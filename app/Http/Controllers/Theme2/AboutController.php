@@ -75,6 +75,11 @@ class AboutController extends Controller
             if (isset($request->contact_cta_image)) {
                 $setting->contact_cta_image = $request->contact_cta_image->store('setting', 'public');
             }
+            if(isset($request->frontvideoimage)){
+                $setting->frontvideoimage = $request->frontvideoimage->store('setting', 'public');
+
+                
+            }
 
             $setting->frontvideo=$request->frontvideo;
             $setting->contact_cta_title=$request->contact_cta_title;
